@@ -1,0 +1,49 @@
+#vimmyHints span {
+	z-index: 2147483646									!important;
+	height: 18px										!important;
+	box-sizing: border-box								!important;
+
+	position: absolute									!important;
+	line-height: 15px									!important;
+
+	background: black									!important;
+	border: none										!important;
+
+	border-radius: 3px									!important;
+	padding: 0px 5px 0px 5px							!important;
+
+	letter-spacing: 0									!important;
+}
+
+#vimmyHints span b {
+	display: inline										!important;
+	font-weight: normal									!important;
+	-webkit-font-smoothing: subpixel-antialiased		!important;
+	color: white										!important;
+
+	font-family: "Courier New", "Courier", monospace 	!important;
+	font-size: 13px										!important;
+	line-height: 13px									!important;
+	padding: none										!important;
+	margin: none										!important;
+}
+
+#vimmyHints span b.typed {
+	color: red											!important;
+}
+
+#vimmyHints span:before {
+	content: ""													!important;
+
+	position: absolute											!important;
+	top: 2px													!important;
+	left: 95%													!important;
+
+	width: 0													!important;
+	height: 0													!important;
+
+	border: solid												!important;
+	border-color: transparent transparent transparent black		!important;
+	border-width: 7px 7px 7px 7px								!important;
+
+}

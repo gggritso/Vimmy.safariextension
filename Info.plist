@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>George Gritsouk</string>
+	<key>Builder Version</key>
+	<string>8536.26.17</string>
+	<key>CFBundleDisplayName</key>
+	<string>Vimmy</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.gggritso.vimmy</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Global Page</key>
+		<string>vimmy.html</string>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Blacklist</key>
+		<array>
+			<string></string>
+		</array>
+		<key>Scripts</key>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>vimmy.js</string>
+			</array>
+			<key>Start</key>
+			<array>
+				<string>vendor/jquery.js</string>
+				<string>vendor/jquery.viewport.js</string>
+			</array>
+		</dict>
+		<key>Stylesheets</key>
+		<array>
+			<string>vimmy.css</string>
+		</array>
+	</dict>
+	<key>Description</key>
+	<string>Neato Vim keybindings for Safari</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>All</string>
+		</dict>
+	</dict>
+	<key>Update Manifest URL</key>
+	<string>https://raw.github.com/gggritso/Vimmy.safariextension/master/updateManifest.plist</string>
+	<key>Website</key>
+	<string>http://gggritso.github.com/Vimmy.safariextension/</string>
+</dict>
+</plist>
