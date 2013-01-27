@@ -5,11 +5,12 @@
     'characters': 'asdfejklio'.toUpperCase().split(''), // characters used for link hints
     'scrollDistance': 150,  // pixel distance for hjkl scrolling
     'scrollDelay': 100, // time to animate scrolling
-    'mode': 'command',  // start in command mode, other modes are "hint-n" and "hint-s"
+    'mode': 'command',  // start in command mode, other mode is 'hint'
     'scrollLock': false, // keep track of scrolling, don't allow mashing/holding
 
     'isBlacklisted': false,
-    'hostBlacklist': [ 'facebook.com', 'twitter.com', 'www.tumblr.com', 'getprismatic.com' ],
+    'hostBlacklist': [ 'facebook.com', 'twitter.com', 'www.tumblr.com', 'getprismatic.com',
+      'app.asana.com' ],
 
     'hintTemplate': function( hint ) {
 
@@ -59,7 +60,9 @@
 
     },
 
-    'followLink': function( href ) {
+    'followLink': function( href, destination ) {
+
+      console.log( 'following', href, destination );
 
       // Clean up the href
       if ( href.substring( 0, 4 ) !== 'http' ) { // i.e. it's a relative link
@@ -72,9 +75,9 @@
 
       // Follow the white rabbit with a slight UI delay
       setTimeout( function() {
-        if ( Vimmy.mode === 'hint-s' ) {
+        if ( destination === 'same' ) {
           window.location = href;
-        } else if ( Vimmy.mode === 'hint-n' ) {
+        } else if ( destination === 'new' ) {
           safari.self.tab.dispatchMessage( 'newtab', href );
         }
 
@@ -174,21 +177,26 @@
       $( '#vimmyHints span' ).show();
 
       var sequence = Vimmy.typedCharacters.join('').toUpperCase(),
-        hint, props;
+        hint, $hint, $link;
 
       for ( hint in Vimmy.hintLookup ) {
         if ( Vimmy.hintLookup.hasOwnProperty( hint ) ) {
-          props = Vimmy.hintLookup[ hint ]; // i.e. the hint properties, $link and $hint
+          $link = Vimmy.hintLookup[ hint ].$link; // i.e. the hint properties, $link and $hint
+          $hint = Vimmy.hintLookup[ hint ].$hint; // i.e. the hint properties, $link and $hint
 
           // Highlight the hint, hide all irrelevant ones
           if ( hint.substring(0, sequence.length) === sequence) {
-            props.$hint.children().slice(0, sequence.length ).addClass( 'typed' );
+            $hint.children().slice(0, sequence.length ).addClass( 'typed' );
           } else {
-            props.$hint.hide();
+            $hint.hide();
           }
 
           if ( hint === sequence ) {
-            Vimmy.followLink( props.$link.attr( 'href' ) );
+            if ( $link.attr( 'target' ) === '_blank' ) {
+              Vimmy.followLink( $link.attr( 'href' ), 'new' );
+            } else {
+              Vimmy.followLink( $link.attr( 'href' ), 'same' );
+            }
 
             Vimmy.typedCharacters = [];
             $( '#vimmyHints span' ).show();
@@ -214,12 +222,7 @@
         // The simple case, just listen for keybindings
 
         if ( keyName === 'f' ) {
-          Vimmy.mode = 'hint-n'; // enter hint mode for new tab opening
-          Vimmy.showHints();
-        }
-
-        if ( keyName === 'shift-f' ) {
-          Vimmy.mode = 'hint-s'; // enter hint mode for same tab opening
+          Vimmy.mode = 'hint'; // enter hint mode for new tab opening
           Vimmy.showHints();
         }
 
@@ -244,7 +247,7 @@
           Vimmy.scroll( null, $( document ).height() );
         }
 
-      } else { // Vimmy.mode === 'hint-x' or 'hint-n'
+      } else { // Vimmy.mode === 'hint'
         // We're typing in links right now and such
 
         // Cut out of hint mode with escape of ctrl+[

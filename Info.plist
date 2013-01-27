@@ -25,7 +25,7 @@
 	<dict>
 		<key>Blacklist</key>
 		<array>
-			<string></string>
+			<string>https://app.asana.com/*</string>
 		</array>
 		<key>Scripts</key>
 		<dict>
