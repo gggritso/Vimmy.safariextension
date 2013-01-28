@@ -1,10 +1,12 @@
 #vimmyHints span {
 	z-index: 2147483646									!important;
-	height: 18px										!important;
+	height: 16px										!important;
 	box-sizing: border-box								!important;
 
 	position: absolute									!important;
-	line-height: 15px									!important;
+
+	font-size: 13px										!important;
+	line-height: 13px									!important;
 
 	background: black									!important;
 	border: none										!important;
@@ -36,7 +38,7 @@
 	content: ""													!important;
 
 	position: absolute											!important;
-	top: 2px													!important;
+	top: 1px													!important;
 	left: 95%													!important;
 
 	width: 0													!important;

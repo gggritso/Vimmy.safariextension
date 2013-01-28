@@ -60,9 +60,16 @@
 
     },
 
-    'followLink': function( href, destination ) {
+    'followLink': function( $link ) {
 
-      console.log( 'following', href, destination );
+      var href = $link.attr( 'href' ),
+        destination;
+
+      if ( $link.attr( 'target' ) === '_blank' ) {
+        destination =  'new';
+      } else {
+        destination = 'same' ;
+      }
 
       // Clean up the href
       if ( href.substring( 0, 4 ) !== 'http' ) { // i.e. it's a relative link
@@ -76,7 +83,7 @@
       // Follow the white rabbit with a slight UI delay
       setTimeout( function() {
         if ( destination === 'same' ) {
-          window.location = href;
+          window.location.href = href;
         } else if ( destination === 'new' ) {
           safari.self.tab.dispatchMessage( 'newtab', href );
         }
@@ -86,6 +93,19 @@
       }, 100 );
 
       return true;
+    },
+
+    'activateIframe': function( $elem ) {
+
+      // Unfortunately, YouTube and Vimeo don't use the same kinds of parameters :(
+      // note that I want to catch when the _hostname_ is youtube/vimeo, just in case but I don't really know
+      // how to do it nicely
+      if ( $elem.attr( 'src' ).indexOf( 'youtube' ) > 0 ) {
+        $elem.attr( 'src', $elem.attr( 'src' ).replace( /&autoplay=[10]/, '' ) + '&autoplay=1' );
+      } else if ( $elem.attr( 'src' ).indexOf( 'vimeo' ) > 0 ) {
+        $elem.attr( 'src', $elem.attr( 'src' ).replace( /&autoplay=(false|true)/, '' ) + '?autoplay=true' );
+      }
+
     },
 
     'processKey': function( event ) {
@@ -127,12 +147,17 @@
 
     'showHints': function( ) {
       // Display all the nice little key hints!
-      var links = $( 'a:in-viewport:visible' ),
+      var links = $( 'a:in-viewport:visible, iframe[src*=youtube]:in-viewport, iframe[src*=vimeo]:in-viewport' ),
         linkCount = links.length,
         charCount = Vimmy.characters.length,
         hintLength = Math.ceil( Math.log( linkCount ) / Math.log( charCount ) ),
         hints = [],
         i, j, c, hint, $hint, $link, linkOffset;
+
+      if ( linkCount > 0 && hintLength === 0 ) {
+        // Math, bro - log(1) === 0 :(
+        hintLength = 1;
+      }
 
       // Create the hint text snippets AAA, AAB, ACD, etc
       $( 'body' ).append( $( '<div id="vimmyHints"></div>' ) );
@@ -192,10 +217,10 @@
           }
 
           if ( hint === sequence ) {
-            if ( $link.attr( 'target' ) === '_blank' ) {
-              Vimmy.followLink( $link.attr( 'href' ), 'new' );
-            } else {
-              Vimmy.followLink( $link.attr( 'href' ), 'same' );
+            if ( $link.prop( 'tagName' ) === 'A' ) {
+              Vimmy.followLink( $link );
+            } else if ( $link.prop( 'tagName' ) === 'IFRAME' ) {
+              Vimmy.activateIframe( $link );
             }
 
             Vimmy.typedCharacters = [];
@@ -214,6 +239,12 @@
       if ( $.inArray( document.activeElement.tagName.toUpperCase(), ['INPUT', 'TEXTAREA'] ) > -1 ) {
         return;
       }
+
+      // If it's a box with contenteditable (basically an input), ignore actions
+      if ( $( document.activeElement ).attr( 'contenteditable' ) === 'true' ) {
+        return;
+      }
+
 
       var keyCode = event.keyCode,
         keyName = Vimmy.processKey( event );
