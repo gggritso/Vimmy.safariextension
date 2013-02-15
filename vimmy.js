@@ -95,19 +95,6 @@
       return true;
     },
 
-    'activateIframe': function( $elem ) {
-
-      // Unfortunately, YouTube and Vimeo don't use the same kinds of parameters :(
-      // note that I want to catch when the _hostname_ is youtube/vimeo, just in case but I don't really know
-      // how to do it nicely
-      if ( $elem.attr( 'src' ).indexOf( 'youtube' ) > 0 ) {
-        $elem.attr( 'src', $elem.attr( 'src' ).replace( /&autoplay=[10]/, '' ) + '&autoplay=1' );
-      } else if ( $elem.attr( 'src' ).indexOf( 'vimeo' ) > 0 ) {
-        $elem.attr( 'src', $elem.attr( 'src' ).replace( /&autoplay=(false|true)/, '' ) + '?autoplay=true' );
-      }
-
-    },
-
     'processKey': function( event ) {
       // Takes a keypress event and returns a nice, clean keyName
 
@@ -147,7 +134,7 @@
 
     'showHints': function( ) {
       // Display all the nice little key hints!
-      var links = $( 'a:in-viewport:visible, iframe[src*=youtube]:in-viewport, iframe[src*=vimeo]:in-viewport' ),
+      var links = $( 'a:in-viewport:visible' ),
         linkCount = links.length,
         charCount = Vimmy.characters.length,
         hintLength = Math.ceil( Math.log( linkCount ) / Math.log( charCount ) ),
@@ -217,11 +204,7 @@
           }
 
           if ( hint === sequence ) {
-            if ( $link.prop( 'tagName' ) === 'A' ) {
-              Vimmy.followLink( $link );
-            } else if ( $link.prop( 'tagName' ) === 'IFRAME' ) {
-              Vimmy.activateIframe( $link );
-            }
+            Vimmy.followLink( $link );
 
             Vimmy.typedCharacters = [];
             $( '#vimmyHints span' ).show();

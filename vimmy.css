@@ -22,6 +22,7 @@
 	font-weight: normal									!important;
 	-webkit-font-smoothing: subpixel-antialiased		!important;
 	color: white										!important;
+	text-shadow: none 									!important;
 
 	font-family: "Courier New", "Courier", monospace 	!important;
 	font-size: 13px										!important;
