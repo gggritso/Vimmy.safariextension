@@ -1,4 +1,4 @@
-#vimmyHints span {
+#vimmy-hints span {
 	z-index: 2147483646									!important;
 	height: 16px										!important;
 	box-sizing: border-box								!important;
@@ -8,7 +8,8 @@
 	font-size: 13px										!important;
 	line-height: 13px									!important;
 
-	background: black									!important;
+	background-color: black								!important;
+	opacity: 0.8		!important;
 	border: none										!important;
 
 	border-radius: 3px									!important;
@@ -17,7 +18,11 @@
 	letter-spacing: 0									!important;
 }
 
-#vimmyHints span b {
+#vimmy-hints span.ineligible {
+	opacity: 0.1 !important;
+}
+
+#vimmy-hints span b {
 	display: inline										!important;
 	font-weight: normal									!important;
 	-webkit-font-smoothing: subpixel-antialiased		!important;
@@ -31,22 +36,40 @@
 	margin: none										!important;
 }
 
-#vimmyHints span b.typed {
+#vimmy-hints span b.typed {
 	color: red											!important;
 }
 
-#vimmyHints span:before {
+#vimmy-hints span:before,
+#vimmy-hints span:after {
 	content: ""													!important;
 
 	position: absolute											!important;
 	top: 1px													!important;
-	left: 95%													!important;
 
 	width: 0													!important;
 	height: 0													!important;
 
-	border: solid												!important;
-	border-color: transparent transparent transparent black		!important;
+	border-style: solid												!important;
 	border-width: 7px 7px 7px 7px								!important;
+}
 
+#vimmy-hints span.left:after {
+	right: -12px;													!important;
+
+	border-color: transparent transparent transparent black		!important;
+}
+
+#vimmy-hints span.left:before {
+	display: none;
+}
+
+#vimmy-hints span.right:before {
+	left: -12px												!important;
+
+	border-color: transparent black transparent transparent		!important;
+}
+
+#vimmy-hints span.right:after {
+	display: none;
 }

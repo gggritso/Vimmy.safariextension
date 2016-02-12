@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>George Gritsouk</string>
 	<key>Builder Version</key>
-	<string>8536.26.17</string>
+	<string>11601.4.4</string>
 	<key>CFBundleDisplayName</key>
 	<string>Vimmy</string>
 	<key>CFBundleIdentifier</key>
@@ -19,33 +19,31 @@
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
-		<string>vimmy.html</string>
+		<string>src/vimmy.html</string>
 	</dict>
 	<key>Content</key>
 	<dict>
-		<key>Blacklist</key>
-		<array>
-			<string>https://app.asana.com/*</string>
-		</array>
 		<key>Scripts</key>
 		<dict>
 			<key>End</key>
 			<array>
-				<string>vimmy.js</string>
+				<string>src/vimmy2.js</string>
 			</array>
 			<key>Start</key>
 			<array>
 				<string>vendor/jquery.js</string>
-				<string>vendor/jquery.viewport.js</string>
+				<string>src/prototypeExtensions.js</string>
 			</array>
 		</dict>
 		<key>Stylesheets</key>
 		<array>
-			<string>vimmy.css</string>
+			<string>src/vimmy.css</string>
 		</array>
 	</dict>
 	<key>Description</key>
 	<string>Neato Vim keybindings for Safari</string>
+	<key>DeveloperIdentifier</key>
+	<string>0000000000</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
