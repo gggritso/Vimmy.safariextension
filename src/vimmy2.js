@@ -15,7 +15,8 @@
 
   var KEYCODE_LOOKUP = {
     9: 'tab', 17: 'ctrl', 16: 'shift',
-    18: 'alt', 27: 'esc', 8: 'backspace',
+    18: 'alt', 27: 'esc', 8: 'delete',
+    91: 'cmd', 93: 'cmd', 13: 'return',
 
     65: 'a', 66: 'b', 67: 'c', 68: 'd', 69: 'e',
     70: 'f', 71: 'g', 72: 'h', 73: 'i', 74: 'j',
@@ -37,7 +38,7 @@
     'twitter.com',
   ];
 
-  var MODIFIER_KEYCODES = [ 16, 17, 18, 91 ];
+  var MODIFIER_KEYCODES = [ 16, 17, 18, 91, 93 ];
 
   var
     MODE = 'command',
@@ -118,7 +119,7 @@
         return;
       }
 
-      if ( key === 'backspace' ) {
+      if ( key === 'delete' ) {
         TYPED_HINT_CHARACTERS.pop();
         filterHints( TYPED_HINT_CHARACTERS );
 
