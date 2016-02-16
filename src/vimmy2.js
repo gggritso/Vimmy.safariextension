@@ -7,7 +7,7 @@
 
   var
     // TODO: These should be settings
-    CHARACTERS = 'asdfejklio'.toUpperCase().split( '' ),
+    CHARACTERS = 'asdfewjklio'.toUpperCase().split( '' ),
     SCROLL_DISTANCE = 450,  // px
     SCROLL_DURATION = 100;  // ms
 
