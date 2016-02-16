@@ -17,5 +17,9 @@
     return array.indexOf( this ) !== -1;
   };
 
+  String.prototype.reverse = function() {
+    return this.split( '' ).reverse().join( '' );
+  };
+
 
 })();

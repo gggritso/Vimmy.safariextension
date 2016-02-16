@@ -214,6 +214,8 @@
 
       i += 1;
 
+      text = text.reverse(); // A usability feature, ensure that adjacent hints start with different letters
+
       return {
         text: text,
         $hint: makeHintHTML( $element, text ),
