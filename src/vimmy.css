@@ -1,3 +1,8 @@
+#vimmy-hints {
+	position: absolute !important;
+	top: 0 !important;
+}
+
 #vimmy-hints span {
 	z-index: 2147483646									!important;
 	height: 16px										!important;
