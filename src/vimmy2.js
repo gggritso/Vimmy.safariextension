@@ -50,7 +50,7 @@
 
     if ( amAnIframe() ) return;
 
-    $window.on( 'keydown', vimmyKeyDownHandler );
+    window.addEventListener( 'keydown', vimmyKeyDownHandler, true )
     $body.append( '<div id="vimmy-hints"></div>' );
 
   }
@@ -73,6 +73,8 @@
     if ( MODE === 'command' ) {
 
       if ( key.isIn([ 'f', 'shift-f' ]) ) {
+        swallowEvent( event );
+
         FORCE_NEW_TAB = ( key === 'shift-f' );
 
         $elements = getVisibleElements();
@@ -87,6 +89,7 @@
       }
 
       if ( [ 'h', 'j', 'k', 'l' ].contains( key ) ) {
+        swallowEvent( event );
 
         if ( key === 'h' ) scrollBy( -SCROLL_DISTANCE, 0 );
         if ( key === 'j' ) scrollBy( 0, SCROLL_DISTANCE );
@@ -100,6 +103,7 @@
       if ( key === 'shift-g' ) scrollTo( null, document.height );
 
     } else if ( MODE === 'elements' ) {
+      swallowEvent( event );
 
       if ( [ 'esc', 'ctrl+[' ].contains( key ) ) {
         MODE = 'command';
@@ -123,6 +127,14 @@
     }
 
     PREVIOUS_KEY = key;
+  }
+
+
+  function swallowEvent( event ) {
+
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
   }
 
 
