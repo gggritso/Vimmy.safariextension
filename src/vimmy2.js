@@ -30,14 +30,6 @@
 
   // TODO: Benchmark and improve hint creation time
 
-  // TODO: This should be a setting
-  var HJKL_BLACKLIST = [
-    'www.facebook.com',
-    'facebook.com',
-    'www.twitter.com',
-    'twitter.com',
-  ];
-
   var MODIFIER_KEYCODES = [ 16, 17, 18, 91, 93 ];
 
   var
@@ -45,7 +37,6 @@
     FORCE_NEW_TAB = false,
 
     SCROLL_IS_LOCKED = false,
-    HJKL_ENABLED = true,
 
     HINTS = [],
 
@@ -58,8 +49,6 @@
   function boot() {
 
     if ( amAnIframe() ) return;
-
-    HJKL_ENABLED = !HJKL_BLACKLIST.contains( window.location.host );
 
     $window.on( 'keydown', vimmyKeyDownHandler );
     $body.append( '<div id="vimmy-hints"></div>' );
@@ -97,7 +86,7 @@
         return;
       }
 
-      if ( [ 'h', 'j', 'k', 'l' ].contains( key ) && HJKL_ENABLED ) {
+      if ( [ 'h', 'j', 'k', 'l' ].contains( key ) ) {
 
         if ( key === 'h' ) scrollBy( -SCROLL_DISTANCE, 0 );
         if ( key === 'j' ) scrollBy( 0, SCROLL_DISTANCE );
