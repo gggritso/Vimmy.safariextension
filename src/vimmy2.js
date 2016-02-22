@@ -199,7 +199,15 @@
 
   function isVisible( element ) {
     // TODO: Check performance issues
-    return $( element ).is( ':visible' );
+    if ( element.offsetWidth === 0 && element.offsetHeight === 0 ) return false;
+    if ( element.getClientRects().length === 0 ) return false;
+
+    var style = window.getComputedStyle( element );
+
+    if ( style.visibility === 'hidden' ) return false;
+    if ( style.opacity === 0 ) return false;
+
+    return true;
   }
 
 
