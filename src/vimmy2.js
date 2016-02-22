@@ -14,7 +14,7 @@
   var GREEDY_INPUT_TYPES = [ 'text', 'password', 'phone', 'email' ];
 
   var
-    TARGETABLE_ELEMENTS = [ 'a', 'button' ],
+    TARGETABLE_ELEMENTS = [ 'a', 'button', 'input', 'select' ],
     TARGETABLE_ELEMENT_SELECTOR = TARGETABLE_ELEMENTS.join( ', ' );
 
   var KEYCODE_LOOKUP = {
@@ -327,6 +327,8 @@
       activator = activateAnchor;
     } else if ( isButtonLike( $element ) ) {
       activator = clickElement;
+    } else {
+      activator = focusElement;
     }
 
 
@@ -357,6 +359,11 @@
   }
 
 
+
+
+  function focusElement( $element ) {
+
+    $element.focus();
   }
 
 
