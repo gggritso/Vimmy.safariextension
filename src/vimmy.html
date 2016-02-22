@@ -5,10 +5,10 @@
   // Listen to requests to open a new tab
   var t;
   safari.application.addEventListener( 'message', function( event ) {
-  	if ( event.name == 'newtab' ) {
-  		t = safari.application.activeBrowserWindow.openTab( );
-  		t.url = event.message;
-  	}
+    if ( event.name == 'newtab' ) {
+      t = safari.application.activeBrowserWindow.openTab( 'background' );
+      t.url = event.message;
+    }
   });
 
 </script></head>

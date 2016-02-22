@@ -462,8 +462,7 @@
   function makeAbsoluteUrl( url ) {
 
     if ( url.startsWith( '#' ) ) {
-      return window.location.href + url;
-      hideHints();
+      return window.location.protocol + '//' + window.location.host + window.location.pathname + window.location.search + url;
     }
 
     if ( !url.startsWith( 'http' ) ) {
@@ -502,13 +501,10 @@
     if ( top !== null ) animationProperties.scrollTop = top + 'px';
     if ( left !== null ) animationProperties.scrollLeft = left + 'px';
 
-    $body.animate( animationProperties, SCROLL_DURATION, unlockScroll );
+    $body.animate( animationProperties, SCROLL_DURATION, function() {
+      SCROLL_IS_LOCKED = false;
+    });
 
-  }
-
-
-  function unlockScroll() {
-    SCROLL_IS_LOCKED = false;
   }
 
   // // // // //
