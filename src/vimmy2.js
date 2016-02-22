@@ -13,6 +13,10 @@
 
   var GREEDY_INPUT_TYPES = [ 'text', 'password', 'phone', 'email' ];
 
+  var
+    TARGETABLE_ELEMENTS = [ 'a', 'button' ],
+    TARGETABLE_ELEMENT_SELECTOR = TARGETABLE_ELEMENTS.join( ', ' );
+
   var KEYCODE_LOOKUP = {
     9: 'tab', 17: 'ctrl', 16: 'shift',
     18: 'alt', 27: 'esc', 8: 'delete',
@@ -64,7 +68,6 @@
   function vimmyKeyDownHandler( event ) {
 
     if ( elementCapturesKeys( document.activeElement ) ) return;
-
 
     var
       key = getKeyNameFromEvent( event ),
@@ -177,7 +180,8 @@
 
   function getVisibleElements() {
 
-    return Array.prototype.slice.call( document.querySelectorAll( 'a' ) )
+    return Array.prototype.slice
+      .call( document.querySelectorAll( TARGETABLE_ELEMENT_SELECTOR ) )
       .filter( inViewPort )
       .filter( isVisible );
 
