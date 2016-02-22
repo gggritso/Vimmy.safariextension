@@ -321,20 +321,91 @@
 
   function activateElement( $element ) {
 
-    if ( $element.tagName === 'A' ) window.setTimeout( function() {
-      activateAnchor( $element );
-    });
+    var activator;
+
+    if ( isLinkLike( $element ) ) {
+      activator = activateAnchor;
+    } else if ( isButtonLike( $element ) ) {
+      activator = clickElement;
+    }
+
+
+    window.setTimeout( function() {
+      activator( $element );
+    }, 50 );
+
 
     window.setTimeout( function() {
 
       hideHints();
       MODE = 'command';
-    }, 250 );
+    }, 150 );
+
+  }
+
+
+  function isLinkLike( $element ) {
+    return $element.tagName === 'A';
+  }
+
+
+  function isButtonLike( $element ) {
+    if ( $element.tagName === 'BUTTON' ) return true;
+    if ( $element.getAttribute( 'type' ) === 'button' ) return true;
+
+    return false
+  }
+
 
   }
 
 
   function activateAnchor( $anchor ) {
+    // NOTE: Triggering .click() on these tends to flat-out not work
+
+    var
+      href = $anchor.getAttribute( 'href' ),
+      target = $anchor.getAttribute( 'target' ),
+      url = makeAbsoluteUrl( href );
+
+    console.log( 'Activating anchor', $anchor );
+    console.log( 'Anchor has target', $anchor.getAttribute( 'target' ) );
+
+    if ( FORCE_NEW_TAB ) {
+      console.log( 'Demanded new tab, requesting', url );
+      // safari.self.tab.dispatchMessage( 'newtab', url );
+      clickElement( $anchor );
+    } else if ( target === '_blank' ) {
+      console.log( 'Target is blank, requesting tab', url );
+      // safari.self.tab.dispatchMessage( 'newtab', url );
+      clickElement( $anchor );
+    } else {
+      // window.location.href = url;
+      console.log( 'Triggering click' );
+      clickElement( $anchor );
+      // $anchor.click();
+    }
+
+  }
+
+
+  function clickElement( $element ) {
+
+    $element.click();
+    return;
+
+    var eventOptions = {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+    };
+
+    var event = new MouseEvent( 'click', eventOptions );
+
+    $element.dispatchEvent( event );
+  }
+
+
 
     var
       url = makeAbsoluteUrl( $anchor.getAttribute( 'href' ) ),
