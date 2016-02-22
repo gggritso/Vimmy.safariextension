@@ -13,6 +13,10 @@
     return this.substring(0, substring.length ) === substring;
   };
 
+  String.prototype.contains = function( substring ) {
+    return this.indexOf( substring ) !== -1;
+  };
+
   String.prototype.isIn = function( array ) {
     return array.indexOf( this ) !== -1;
   };

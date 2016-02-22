@@ -14,7 +14,7 @@
   var GREEDY_INPUT_TYPES = [ 'text', 'password', 'phone', 'email' ];
 
   var
-    TARGETABLE_ELEMENTS = [ 'a', 'button', 'input', 'select' ],
+    TARGETABLE_ELEMENTS = [ 'a', 'button', 'input', 'select', 'iframe[src*="youtube"]' ],
     TARGETABLE_ELEMENT_SELECTOR = TARGETABLE_ELEMENTS.join( ', ' );
 
   var KEYCODE_LOOKUP = {
@@ -327,6 +327,8 @@
       activator = activateAnchor;
     } else if ( isButtonLike( $element ) ) {
       activator = clickElement;
+    } else if ( isYouTubeEmbed( $element ) ) {
+      activator = activateYouTubeEmbed;
     } else {
       activator = focusElement;
     }
@@ -359,6 +361,24 @@
   }
 
 
+  function isYouTubeEmbed( $element ) {
+
+    var
+      tag = $element.tagName,
+      src = $element.getAttribute( 'src' );
+
+    if ( tag !== 'IFRAME' ) return false
+    if ( !src ) return false;
+
+    // TODO: Use a regex for matching
+
+    if ( src.contains( 'youtube.com/embed' ) )
+
+    if ( src.startsWith( 'http://www.youtube' ) ) return true;
+    if ( src.startsWith( 'https://www.youtube' ) ) return true;
+
+    return false;
+  }
 
 
   function focusElement( $element ) {
@@ -413,15 +433,27 @@
   }
 
 
+  function activateYouTubeEmbed( $embed ) {
+
+    function activateEmbed() {
+
+      $embed.contentWindow.postMessage( JSON.stringify({
+        event: 'command',
+        func: 'playVideo',
+      }), '*' );
+
+    }
 
     var
-      url = makeAbsoluteUrl( $anchor.getAttribute( 'href' ) ),
-      openNewTab = $anchor.getAttribute( 'target' ) === '_blank' || FORCE_NEW_TAB;
+      src = $embed.getAttribute( 'src' );
 
-    if ( openNewTab ) {
-      safari.self.tab.dispatchMessage( 'newtab', url )
+    if ( !src.contains( 'enablejsapi' ) ) {
+
+      $embed.setAttribute( 'src', src + '&enablejsapi=1' );
+      $embed.onload = activateEmbed();
+
     } else {
-      window.location.href = url
+      activateEmbed();
     }
 
   }
