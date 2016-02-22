@@ -292,7 +292,8 @@
 
     var
       prefix = characters.join( '' ).toUpperCase(),
-      activeHints = [];
+      activeHints = [],
+      activeHint;
 
     HINTS.forEach( function checkHint( hint ) {
 
@@ -311,7 +312,10 @@
 
     });
 
-    if ( activeHints.length === 1 ) activateElement( activeHints[ 0 ].$element );
+    if ( activeHints.length > 1 ) return;
+    activeHint = activeHints[ 0 ];
+
+    if ( activeHint.text === prefix ) activateElement( activeHint.$element );
   }
 
 
