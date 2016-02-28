@@ -413,7 +413,7 @@
       } else if ( url.startsWith( '/' ) ) {
         url = window.location.origin + url;
       } else {
-        url = window.location.url.match(/.+\//) + url;
+        url = window.location.href.match(/.+\//) + url;
       }
 
     }
