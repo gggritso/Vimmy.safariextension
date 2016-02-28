@@ -205,7 +205,7 @@
     var style = window.getComputedStyle( element );
 
     if ( style.visibility === 'hidden' ) return false;
-    if ( style.opacity === 0 ) return false;
+    if ( style.opacity === '0' ) return false;
 
     return true;
   }
