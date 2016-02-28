@@ -14,7 +14,7 @@
   var GREEDY_INPUT_TYPES = [ 'text', 'password', 'phone', 'email' ];
 
   var
-    TARGETABLE_ELEMENTS = [ 'a', 'button', 'input', 'select', 'iframe[src*="youtube"]' ],
+    TARGETABLE_ELEMENTS = [ 'a', 'button', 'input', 'select' ],
     TARGETABLE_ELEMENT_SELECTOR = TARGETABLE_ELEMENTS.join( ', ' );
 
   var KEYCODE_LOOKUP = {
@@ -327,8 +327,6 @@
       activator = activateAnchor;
     } else if ( isButtonLike( $element ) ) {
       activator = clickElement;
-    } else if ( isYouTubeEmbed( $element ) ) {
-      activator = activateYouTubeEmbed;
     } else {
       activator = focusElement;
     }
@@ -358,26 +356,6 @@
     if ( $element.getAttribute( 'type' ) === 'button' ) return true;
 
     return false
-  }
-
-
-  function isYouTubeEmbed( $element ) {
-
-    var
-      tag = $element.tagName,
-      src = $element.getAttribute( 'src' );
-
-    if ( tag !== 'IFRAME' ) return false
-    if ( !src ) return false;
-
-    // TODO: Use a regex for matching
-
-    if ( src.contains( 'youtube.com/embed' ) )
-
-    if ( src.startsWith( 'http://www.youtube' ) ) return true;
-    if ( src.startsWith( 'https://www.youtube' ) ) return true;
-
-    return false;
   }
 
 
@@ -419,43 +397,6 @@
   function clickElement( $element ) {
 
     $element.click();
-    return;
-
-    var eventOptions = {
-      bubbles: true,
-      cancelable: true,
-      view: window,
-    };
-
-    var event = new MouseEvent( 'click', eventOptions );
-
-    $element.dispatchEvent( event );
-  }
-
-
-  function activateYouTubeEmbed( $embed ) {
-
-    function activateEmbed() {
-
-      $embed.contentWindow.postMessage( JSON.stringify({
-        event: 'command',
-        func: 'playVideo',
-      }), '*' );
-
-    }
-
-    var
-      src = $embed.getAttribute( 'src' );
-
-    if ( !src.contains( 'enablejsapi' ) ) {
-
-      $embed.setAttribute( 'src', src + '&enablejsapi=1' );
-      $embed.onload = activateEmbed();
-
-    } else {
-      activateEmbed();
-    }
-
   }
 
 
