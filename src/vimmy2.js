@@ -366,29 +366,29 @@
 
 
   function activateAnchor( $anchor ) {
-    // NOTE: Triggering .click() on these tends to flat-out not work
 
     var
       href = $anchor.getAttribute( 'href' ),
       target = $anchor.getAttribute( 'target' ),
       url = makeAbsoluteUrl( href );
 
-    console.log( 'Activating anchor', $anchor );
-    console.log( 'Anchor has target', $anchor.getAttribute( 'target' ) );
-
     if ( FORCE_NEW_TAB ) {
-      console.log( 'Demanded new tab, requesting', url );
-      // safari.self.tab.dispatchMessage( 'newtab', url );
-      clickElement( $anchor );
+
+      safari.self.tab.dispatchMessage( 'newtab', {
+        url: url,
+        destination: 'background',
+      });
+
     } else if ( target === '_blank' ) {
-      console.log( 'Target is blank, requesting tab', url );
-      // safari.self.tab.dispatchMessage( 'newtab', url );
-      clickElement( $anchor );
+
+      safari.self.tab.dispatchMessage( 'newtab', {
+        url: url,
+        destination: null,
+      });
+
     } else {
-      // window.location.href = url;
-      console.log( 'Triggering click' );
+
       clickElement( $anchor );
-      // $anchor.click();
     }
 
   }

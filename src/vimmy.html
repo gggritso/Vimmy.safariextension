@@ -6,8 +6,8 @@
   var t;
   safari.application.addEventListener( 'message', function( event ) {
     if ( event.name == 'newtab' ) {
-      t = safari.application.activeBrowserWindow.openTab( 'background' );
-      t.url = event.message;
+      t = safari.application.activeBrowserWindow.openTab( event.message.destination );
+      t.url = event.message.url;
     }
   });
 
