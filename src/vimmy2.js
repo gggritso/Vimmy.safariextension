@@ -252,11 +252,11 @@
       top;
 
     if ( attachment === 'left' ) {
-      left = ( bounds.left - ( ( text.length * 8 ) + 15 ) ) + window.scrollX,
-      top = ( bounds.top + bounds.bottom ) / 2 - 8 + window.scrollY;
+      left = ( bounds.left - ( ( text.length * 8 ) + 15 ) ),
+      top = ( bounds.top + bounds.bottom ) / 2 - 8;
     } else {
-      left = ( bounds.right ) + 8 + window.scrollX,
-      top = ( bounds.top + bounds.bottom ) / 2 - 8 + window.scrollY;
+      left = ( bounds.right ) + 8,
+      top = ( bounds.top + bounds.bottom ) / 2 - 8;
     };
 
     return $( '<span class="' + attachment + '" style="left: ' + left + 'px; top: ' + top + 'px;">' +

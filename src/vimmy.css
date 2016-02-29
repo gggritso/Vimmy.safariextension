@@ -1,15 +1,18 @@
 #vimmy-hints {
-	position: absolute !important;
+	position: fixed !important;
 	top: 0 !important;
 	left: 0 !important;
+	right: 0 !important;
+
+	z-index: 2147483646									!important;
 }
 
 #vimmy-hints span {
-	z-index: 2147483646									!important;
 	height: 16px										!important;
 	box-sizing: border-box								!important;
 
 	position: absolute									!important;
+	float: none !important;
 
 	font-size: 13px										!important;
 	line-height: 13px									!important;
