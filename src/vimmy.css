@@ -18,24 +18,31 @@
 	line-height: 13px									!important;
 
 	background-color: black								!important;
-	opacity: 0.75		!important;
+	color: white !important;
+	opacity: 0.85		!important;
 	border: none										!important;
 
 	border-radius: 3px									!important;
 	padding: 0px 5px 0px 5px							!important;
 
 	letter-spacing: 0									!important;
+
+	transition: opacity 0.2s !important;
 }
 
 #vimmy-hints span.ineligible {
 	opacity: 0.1 !important;
 }
 
+#vimmy-hints span.accepted {
+	color: #27ae60 !important;
+}
+
 #vimmy-hints span b {
 	display: inline										!important;
 	font-weight: normal									!important;
 	-webkit-font-smoothing: subpixel-antialiased		!important;
-	color: white										!important;
+	color: inherit										!important;
 	text-shadow: none 									!important;
 
 	font-family: "Courier New", "Courier", monospace 	!important;
@@ -46,7 +53,7 @@
 }
 
 #vimmy-hints span b.typed {
-	color: red											!important;
+	color: #c0392b											!important;
 }
 
 #vimmy-hints span:before,

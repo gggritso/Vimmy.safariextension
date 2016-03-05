@@ -315,7 +315,11 @@
     if ( activeHints.length > 1 ) return;
     activeHint = activeHints[ 0 ];
 
-    if ( activeHint.text === prefix ) activateElement( activeHint.$element );
+    if ( activeHint.text === prefix ) {
+      activateElement( activeHint.$element );
+      highlightHint( activeHint.$hint );
+    }
+
   }
 
 
@@ -334,7 +338,7 @@
 
     window.setTimeout( function() {
       activator( $element );
-    }, 50 );
+    }, 0 );
 
 
     window.setTimeout( function() {
@@ -342,6 +346,15 @@
       hideHints();
       MODE = 'command';
     }, 150 );
+
+  }
+
+  function highlightHint( $hint ) {
+
+    $hint
+      .addClass( 'accepted' )
+      .find( 'b' )
+      .removeClass( 'typed' );
 
   }
 
