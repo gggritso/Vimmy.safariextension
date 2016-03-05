@@ -106,9 +106,10 @@
       if ( key === 'shift-g' ) scrollTo( null, document.height );
 
     } else if ( MODE === 'elements' ) {
-      swallowEvent( event );
 
       if ( [ 'esc', 'ctrl+[' ].contains( key ) ) {
+        swallowEvent( event );
+
         MODE = 'command';
         hideHints();
 
@@ -116,6 +117,8 @@
       }
 
       if ( key === 'delete' ) {
+        swallowEvent( event );
+
         TYPED_HINT_CHARACTERS.pop();
         filterHints( TYPED_HINT_CHARACTERS );
 
@@ -123,6 +126,8 @@
       }
 
       if ( key.toUpperCase().isIn( CHARACTERS ) ) {
+        swallowEvent( event );
+
         TYPED_HINT_CHARACTERS.push( key );
         filterHints( TYPED_HINT_CHARACTERS );
       }
