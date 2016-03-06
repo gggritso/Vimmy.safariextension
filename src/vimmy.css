@@ -14,6 +14,8 @@
 	position: absolute									!important;
 	float: none !important;
 
+	font-family: "Courier New", "Courier", monospace 	!important;
+
 	font-size: 13px										!important;
 	line-height: 13px									!important;
 
@@ -45,7 +47,9 @@
 	color: inherit										!important;
 	text-shadow: none 									!important;
 
-	font-family: "Courier New", "Courier", monospace 	!important;
+	vertical-align: top;
+
+	font-family: inherit !important;
 	font-size: 13px										!important;
 	line-height: 13px									!important;
 	padding: none										!important;
@@ -54,6 +58,14 @@
 
 #vimmy-hints span b.typed {
 	color: #c0392b											!important;
+}
+
+#vimmy-hints span.left {
+	transform: rotate(20deg);
+}
+
+#vimmy-hints span.right {
+	transform: rotate(20deg);
 }
 
 #vimmy-hints span:before,

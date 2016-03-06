@@ -250,18 +250,20 @@
     var
       // TODO: We already calculated bounds, we need to re-use them if possible!
       bounds = $element.getBoundingClientRect(),
-      attachment = ( bounds.left > 40 ) ? 'left' : 'right';
+      attachment = ( bounds.left > 40 && bounds.top > 10 ) ? 'left' : 'right';
+
+    console.log( 'k' );
 
     var
       left,
       top;
 
     if ( attachment === 'left' ) {
-      left = ( bounds.left - ( ( text.length * 8 ) + 15 ) ),
-      top = ( bounds.top + bounds.bottom ) / 2 - 8;
+      left = ( bounds.left - ( ( text.length * 8 ) + 14 ) ),
+      top = ( bounds.top + bounds.bottom ) / 2 - 15;
     } else {
       left = ( bounds.right ) + 8,
-      top = ( bounds.top + bounds.bottom ) / 2 - 8;
+      top = ( bounds.top + bounds.bottom ) / 2 - 1;
     };
 
     return $( '<span class="' + attachment + '" style="left: ' + left + 'px; top: ' + top + 'px;">' +
