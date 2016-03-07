@@ -252,8 +252,6 @@
       bounds = $element.getBoundingClientRect(),
       attachment = ( bounds.left > 40 && bounds.top > 10 ) ? 'left' : 'right';
 
-    console.log( 'k' );
-
     var
       left,
       top;
