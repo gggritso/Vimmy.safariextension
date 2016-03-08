@@ -11,7 +11,7 @@
     SCROLL_DISTANCE = 450,  // px
     SCROLL_DURATION = 100;  // ms
 
-  var GREEDY_INPUT_TYPES = [ 'text', 'password', 'phone', 'email' ];
+  var GREEDY_INPUT_TYPES = [ 'text', 'password', 'phone', 'email', 'search' ];
 
   var
     TARGETABLE_ELEMENTS = [ 'a', 'button', 'input', 'select' ],
