@@ -247,10 +247,12 @@
 
   function makeHintHTML( $element, text ) {
 
+    // TODO: Attach based on the top of the element, skip the extra calculations!
+
     var
       // TODO: We already calculated bounds, we need to re-use them if possible!
       bounds = $element.getBoundingClientRect(),
-      attachment = ( bounds.left > 40 && bounds.top > 10 ) ? 'left' : 'right';
+      attachment = ( bounds.left > 40 && bounds.top > 0 ) ? 'left' : 'right';
 
     var
       left,
