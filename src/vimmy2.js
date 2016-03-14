@@ -8,7 +8,7 @@
   var
     // TODO: These should be settings
     CHARACTERS = 'asdfewjklio'.toUpperCase().split( '' ),
-    BUMP_DISTANCE = 50, // px
+    BUMP_DISTANCE = 100, // px
     SCROLL_DISTANCE = 450,  // px
     SCROLL_DURATION = 100;  // ms
 
