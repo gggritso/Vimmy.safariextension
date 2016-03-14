@@ -8,6 +8,7 @@
   var
     // TODO: These should be settings
     CHARACTERS = 'asdfewjklio'.toUpperCase().split( '' ),
+    BUMP_DISTANCE = 50, // px
     SCROLL_DISTANCE = 450,  // px
     SCROLL_DURATION = 100;  // ms
 
@@ -94,12 +95,24 @@
       if ( [ 'h', 'j', 'k', 'l' ].contains( key ) ) {
         swallowEvent( event );
 
-        if ( key === 'h' ) scrollBy( -SCROLL_DISTANCE, 0 );
-        if ( key === 'j' ) scrollBy( 0, SCROLL_DISTANCE );
-        if ( key === 'k' ) scrollBy( 0, -SCROLL_DISTANCE );
-        if ( key === 'l' ) scrollBy( SCROLL_DISTANCE, 0 );
+        if ( key === 'h' ) scrollBy( -BUMP_DISTANCE, 0 );
+        if ( key === 'j' ) scrollBy( 0, BUMP_DISTANCE );
+        if ( key === 'k' ) scrollBy( 0, -BUMP_DISTANCE );
+        if ( key === 'l' ) scrollBy( BUMP_DISTANCE, 0 );
 
         return;
+      }
+
+      if ( key === 'ctrl-u' ) {
+        swallowEvent( event );
+
+        scrollBy( 0, -SCROLL_DISTANCE );
+      }
+
+      if ( key === 'ctrl-d' ) {
+        swallowEvent( event );
+
+        scrollBy( 0, SCROLL_DISTANCE );
       }
 
       if ( key === 'g' && PREVIOUS_KEY === 'g' ) scrollTo( null, 0 );
