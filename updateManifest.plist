@@ -14,7 +14,7 @@
        <key>CFBundleShortVersionString</key>
        <string>0.1</string>
        <key>URL</key>
-       <string>https://github.com/gggritso/Vimmy.safariextension/blob/master/build/Vimmy.safariextz?raw=true</string>
+       <string>https://s3.amazonaws.com/gggritso.com/Vimmy.safariextz</string>
      </dict>
    </array>
 </dict>
