@@ -9,7 +9,6 @@
     // TODO: These should be settings
     CHARACTERS = 'asdfewjklio'.toUpperCase().split( '' ),
     BUMP_DISTANCE = 100, // px
-    SCROLL_DISTANCE = 450,  // px
     SCROLL_DURATION = 100;  // ms
 
   var GREEDY_INPUT_TYPES = [ 'text', 'password', 'phone', 'email', 'search' ];
@@ -106,13 +105,13 @@
       if ( key === 'ctrl-u' ) {
         swallowEvent( event );
 
-        scrollBy( 0, -SCROLL_DISTANCE );
+        scrollBy( 0, -( window.innerHeight / 2 ) );
       }
 
       if ( key === 'ctrl-d' ) {
         swallowEvent( event );
 
-        scrollBy( 0, SCROLL_DISTANCE );
+        scrollBy( 0, ( window.innerHeight ) / 2 );
       }
 
       if ( key === 'g' && PREVIOUS_KEY === 'g' ) scrollTo( null, 0 );
