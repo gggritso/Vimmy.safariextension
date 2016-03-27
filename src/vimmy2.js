@@ -114,6 +114,18 @@
         scrollBy( 0, ( window.innerHeight ) / 2 );
       }
 
+      if ( key === 'ctrl-b' ) {
+        swallowEvent( event );
+
+        scrollBy( 0, -window.innerHeight );
+      }
+
+      if ( key === 'ctrl-f' ) {
+        swallowEvent( event );
+
+        scrollBy( 0, window.innerHeight );
+      }
+
       if ( key === 'g' && PREVIOUS_KEY === 'g' ) scrollTo( null, 0 );
       if ( key === 'shift-g' ) scrollTo( null, document.height );
 
