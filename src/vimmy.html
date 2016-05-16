@@ -8,8 +8,36 @@
     if ( event.name == 'newtab' ) {
       t = safari.application.activeBrowserWindow.openTab( event.message.destination );
       t.url = event.message.url;
+    } else if ( event.name == 'nextTab' ) {
+      activateNextTab();
+    } else if ( event.name == 'previousTab' ) {
+      activatePreviousTab();
     }
   });
+
+  function activatePreviousTab() {
+
+    var
+      activeWindow = safari.application.activeBrowserWindow,
+      tabs = activeWindow.tabs,
+      activeTab = activeWindow.activeTab,
+      activeTabIndex = tabs.indexOf( activeWindow.activeTab );
+
+    if ( activeTabIndex === 0 ) activeTabIndex = tabs.length;
+    tabs[ activeTabIndex - 1 ].activate();
+  }
+
+  function activateNextTab() {
+
+    var
+      activeWindow = safari.application.activeBrowserWindow,
+      tabs = activeWindow.tabs,
+      activeTab = activeWindow.activeTab,
+      activeTabIndex = tabs.indexOf( activeWindow.activeTab );
+
+    if ( activeTabIndex === tabs.length - 1 ) activeTabIndex = -1;
+    tabs[ activeTabIndex + 1 ].activate();
+  }
 
 </script></head>
 <body></body>

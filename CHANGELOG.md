@@ -1,3 +1,9 @@
+## 0.3.0
+
+### New Features
+
+- `gt` and `gT` commands that go to the next tab, and previous tab respectively
+
 ## 0.2.0
 
 ### Improvements

@@ -126,8 +126,17 @@
         scrollBy( 0, window.innerHeight );
       }
 
+      if ( key === 'g' ) {
+        swallowEvent( event )
+      }
+
       if ( key === 'g' && PREVIOUS_KEY === 'g' ) scrollTo( null, 0 );
       if ( key === 'shift-g' ) scrollTo( null, document.height );
+
+      if ( key === 'shift-t' && PREVIOUS_KEY === 'g' ) goToPreviousTab();
+      if ( key === 't' && PREVIOUS_KEY === 'g' ) goToNextTab();
+
+      if ( ![ 'cmd', 'esc', 'shift', 'alt', 'tab' ].contains( key ) ) PREVIOUS_KEY = key;
 
     } else if ( MODE === 'elements' ) {
 
@@ -158,7 +167,6 @@
 
     }
 
-    PREVIOUS_KEY = key;
   }
 
 
@@ -490,6 +498,16 @@
       SCROLL_IS_LOCKED = false;
     });
 
+  }
+
+
+  function goToNextTab() {
+    safari.self.tab.dispatchMessage( 'nextTab' );
+  }
+
+
+  function goToPreviousTab() {
+    safari.self.tab.dispatchMessage( 'previousTab' );
   }
 
   // // // // //
