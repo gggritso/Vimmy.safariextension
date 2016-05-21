@@ -10,9 +10,9 @@
        <key>Developer Identifier</key>
        <string>36948PQEY6</string>
        <key>CFBundleVersion</key>
-       <string>1</string>
+       <string>3</string>
        <key>CFBundleShortVersionString</key>
-       <string>0.1</string>
+       <string>0.3.0</string>
        <key>URL</key>
        <string>https://s3.amazonaws.com/gggritso.com/Vimmy.safariextz</string>
      </dict>
