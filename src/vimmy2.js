@@ -155,7 +155,7 @@
       }
 
       if ( key === 'g' && PREVIOUS_KEY === 'g' ) scrollTo( null, 0 );
-      if ( key === 'shift-g' ) scrollTo( null, document.height );
+      if ( key === 'shift-g' ) scrollTo( null, $( document ).height() );
 
       if ( key === 'shift-t' && PREVIOUS_KEY === 'g' ) goToPreviousTab();
       if ( key === 't' && PREVIOUS_KEY === 'g' ) goToNextTab();
