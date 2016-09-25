@@ -17,6 +17,9 @@
     TARGETABLE_ELEMENTS = [ 'a', 'button', 'input', 'select' ],
     TARGETABLE_ELEMENT_SELECTOR = TARGETABLE_ELEMENTS.join( ', ' );
 
+  var
+    URL_IS_BLACKLISTED = false;
+
   var KEYCODE_LOOKUP = {
     9: 'tab', 17: 'ctrl', 16: 'shift',
     18: 'alt', 27: 'esc', 8: 'delete',
@@ -57,6 +60,11 @@
     window.addEventListener( 'keydown', vimmyKeyDownHandler, true )
     $body.append( '<div id="vimmy-hints"></div>' );
 
+    safari.self.addEventListener( 'message', function handleMessage( event ) {
+      if ( event.name === 'newBlackListedURLs' ) checkBlackListStatus( event.message );
+    });
+
+    safari.self.tab.dispatchMessage( 'ready' );
   }
 
 
@@ -65,9 +73,25 @@
   }
 
 
+  function checkBlackListStatus( blackListedURLs ) {
+
+    URL_IS_BLACKLISTED = false;
+
+    var
+      i, expression;
+
+    for ( i = 0; i < blackListedURLs.length; i += 1 ) {
+      expression = new RegExp( blackListedURLs[ i ].trim() );
+      if ( expression.test( window.location.href ) ) URL_IS_BLACKLISTED = true;
+    }
+
+  }
+
+
   function vimmyKeyDownHandler( event ) {
 
     if ( elementCapturesKeys( document.activeElement ) ) return;
+    if ( URL_IS_BLACKLISTED ) return;
 
     var
       key = getKeyNameFromEvent( event ),

@@ -2,6 +2,28 @@
 <html>
 <head><script>
 
+  // Listen to blacklisted URLs setting changes
+  safari.extension.settings.addEventListener( 'change', function( event ) {
+    if ( event.key === 'blackListedURLs' && event.newValue ) announceBlackListToAllTabs();
+  }, false );
+
+
+  function announceBlackListToAllTabs() {
+
+    safari.application.browserWindows.forEach( function iterateThroughWindows( browserWindow ) {
+      browserWindow.tabs.forEach( announceBlackListToTab);
+    });
+
+  }
+
+
+  function announceBlackListToTab( browserTab ) {
+
+    if ( !safari.extension.settings.blackListedURLs ) return;
+
+    browserTab.page.dispatchMessage( 'newBlackListedURLs', safari.extension.settings.blackListedURLs.split( ',' ) );
+  }
+
   // Listen to requests to open a new tab
   var t;
   safari.application.addEventListener( 'message', function( event ) {
@@ -12,6 +34,8 @@
       activateNextTab();
     } else if ( event.name == 'previousTab' ) {
       activatePreviousTab();
+    } else if ( event.name == 'ready' ) {
+      announceBlackListToTab( event.target );
     }
   });
 
