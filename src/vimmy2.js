@@ -284,7 +284,7 @@
     var
       // TODO: We already calculated bounds, we need to re-use them if possible!
       bounds = $element.getBoundingClientRect(),
-      attachment = ( bounds.left > 40 && bounds.top > 0 ) ? 'left' : 'right';
+      attachment = ( bounds.left > 40 && bounds.top > 10 ) ? 'left' : 'right';
 
     var
       left,
