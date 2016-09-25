@@ -322,7 +322,8 @@
     });
 
     $( '#vimmy-hints' )
-      .append( $hints )
+      .css({ top: window.scrollY })
+      .append( $hints );
 
   }
 
