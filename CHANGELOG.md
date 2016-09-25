@@ -1,3 +1,14 @@
+## 0.4.0
+
+### New Features
+
+- URL blacklisting
+
+### Improvements
+- better handling of links at the top of pages
+- fix for a scrolling bug in Safari 10
+- hints now scroll when the site scrolls
+
 ## 0.3.0
 
 ### New Features
