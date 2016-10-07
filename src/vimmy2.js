@@ -160,6 +160,9 @@
       if ( key === 'shift-t' && PREVIOUS_KEY === 'g' ) goToPreviousTab();
       if ( key === 't' && PREVIOUS_KEY === 'g' ) goToNextTab();
 
+      if ( key === 'shift-h' ) goBackHistory();
+      if ( key === 'shift-l' ) goForwardHistory();
+
       if ( ![ 'cmd', 'esc', 'shift', 'alt', 'tab' ].contains( key ) ) PREVIOUS_KEY = key;
 
     } else if ( MODE === 'elements' ) {
@@ -533,6 +536,14 @@
 
   function goToPreviousTab() {
     safari.self.tab.dispatchMessage( 'previousTab' );
+  }
+
+  function goBackHistory() {
+    window.history.back();
+  }
+
+  function goForwardHistory() {
+    window.history.forward();
   }
 
   // // // // //
