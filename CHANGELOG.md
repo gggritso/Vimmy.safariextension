@@ -1,3 +1,11 @@
+## 0.5.0
+
+### New Features
+- `shift-h` and `shift-l` go back and forward in history respectively
+
+### Improvements
+- link that wrap onto multiple lines are now hinted correctly
+
 ## 0.4.0
 
 ### New Features
