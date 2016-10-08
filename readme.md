@@ -6,6 +6,8 @@
 - `f` to click on elements like links, inputs, buttons
 - `shift-f` to open links in a new background tab
 - `esc` and `ctrl+[` to break out of link mode
+- `shift-h` to go back in history
+- `shift-l` to go forward in history
 
 ## Settings
 
