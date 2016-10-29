@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>George Gritsouk</string>
 	<key>Builder Version</key>
-	<string>12602.2.14.0.1</string>
+	<string>12602.2.14.0.7</string>
 	<key>CFBundleDisplayName</key>
 	<string>Vimmy</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.5.0</string>
+	<string>0.6.0</string>
 	<key>CFBundleVersion</key>
 	<string>5</string>
 	<key>Chrome</key>
