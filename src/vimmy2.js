@@ -151,7 +151,11 @@
       }
 
       if ( key === 'g' ) {
-        swallowEvent( event )
+        swallowEvent( event );
+      }
+
+      if ( key === 'x' ) {
+        closeTab();
       }
 
       if ( key === 'g' && PREVIOUS_KEY === 'g' ) scrollTo( null, 0 );
@@ -477,7 +481,6 @@
     $element.click();
   }
 
-
   function makeAbsoluteUrl( url ) {
 
     if ( url.startsWith( '#' ) ) {
@@ -531,7 +534,6 @@
     safari.self.tab.dispatchMessage( 'nextTab' );
   }
 
-
   function goToPreviousTab() {
     safari.self.tab.dispatchMessage( 'previousTab' );
   }
@@ -542,6 +544,10 @@
 
   function goForwardHistory() {
     window.history.forward();
+  }
+
+  function closeTab(){
+    safari.self.tab.dispatchMessage( 'closeTab' );
   }
 
   // // // // //
