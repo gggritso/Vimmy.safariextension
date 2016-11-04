@@ -14,7 +14,7 @@
        <key>CFBundleShortVersionString</key>
        <string>0.6.0</string>
        <key>URL</key>
-       <string>https://s3.amazonaws.com/gggritso.com/Vimmy-0.6.0.safariextz</string>
+       <string>https://s3.amazonaws.com/gggritso.com/Vimmy.safariextz/Vimmy0.6.0.safariextz</string>
      </dict>
      <dict>
        <key>CFBundleIdentifier</key>
@@ -26,7 +26,7 @@
        <key>CFBundleShortVersionString</key>
        <string>0.5.0</string>
        <key>URL</key>
-       <string>https://s3.amazonaws.com/gggritso.com/Vimmy-0.5.0.safariextz</string>
+       <string>https://s3.amazonaws.com/gggritso.com/Vimmy.safariextz/Vimmy0.5.0.safariextz</string>
      </dict>
      <dict>
        <key>CFBundleIdentifier</key>
@@ -38,7 +38,7 @@
        <key>CFBundleShortVersionString</key>
        <string>0.4.0</string>
        <key>URL</key>
-       <string>https://s3.amazonaws.com/gggritso.com/Vimmy-0.4.0.safariextz</string>
+       <string>https://s3.amazonaws.com/gggritso.com/Vimmy.safariextz/Vimmy0.4.0.safariextz</string>
      </dict>
    </array>
 </dict>
