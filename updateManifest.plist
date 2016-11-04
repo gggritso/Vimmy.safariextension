@@ -10,11 +10,35 @@
        <key>Developer Identifier</key>
        <string>36948PQEY6</string>
        <key>CFBundleVersion</key>
-       <string>6</string>
+       <string>5</string>
        <key>CFBundleShortVersionString</key>
        <string>0.6.0</string>
        <key>URL</key>
-       <string>https://s3.amazonaws.com/gggritso.com/Vimmy.safariextz</string>
+       <string>https://s3.amazonaws.com/gggritso.com/Vimmy-0.6.0.safariextz</string>
+     </dict>
+     <dict>
+       <key>CFBundleIdentifier</key>
+       <string>com.gggritso.vimmy</string>
+       <key>Developer Identifier</key>
+       <string>36948PQEY6</string>
+       <key>CFBundleVersion</key>
+       <string>4</string>
+       <key>CFBundleShortVersionString</key>
+       <string>0.5.0</string>
+       <key>URL</key>
+       <string>https://s3.amazonaws.com/gggritso.com/Vimmy-0.5.0.safariextz</string>
+     </dict>
+     <dict>
+       <key>CFBundleIdentifier</key>
+       <string>com.gggritso.vimmy</string>
+       <key>Developer Identifier</key>
+       <string>36948PQEY6</string>
+       <key>CFBundleVersion</key>
+       <string>3</string>
+       <key>CFBundleShortVersionString</key>
+       <string>0.4.0</string>
+       <key>URL</key>
+       <string>https://s3.amazonaws.com/gggritso.com/Vimmy-0.4.0.safariextz</string>
      </dict>
    </array>
 </dict>
