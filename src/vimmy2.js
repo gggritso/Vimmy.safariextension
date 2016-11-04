@@ -158,6 +158,10 @@
         closeTab();
       }
 
+      if ( key === 'r' ) {
+        reloadTab();
+      }
+
       if ( key === 'g' && PREVIOUS_KEY === 'g' ) scrollTo( null, 0 );
       if ( key === 'shift-g' ) scrollTo( null, $( document ).height() );
 
@@ -548,6 +552,10 @@
 
   function closeTab(){
     safari.self.tab.dispatchMessage( 'closeTab' );
+  }
+
+  function reloadTab(){
+    safari.self.tab.dispatchMessage( 'reloadTab' );
   }
 
   // // // // //
