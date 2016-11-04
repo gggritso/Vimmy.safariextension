@@ -11,6 +11,7 @@
 - `gT` to go to the next tab
 - `gt` to go the the previous tab
 - `x` to close the current tab
+- `r` to reload the current tab
 - `ctrl-d` to scroll down by half a page
 - `ctrl-u` to scroll up by half a page
 - `ctrl-f` to scroll down by a full page
