@@ -60,11 +60,13 @@
 	color: #c0392b											!important;
 }
 
-#vimmy-hints span.left {
+#vimmy-hints span.rotated.left {
+	transform-origin: 26px 8px;
 	transform: rotate(20deg);
 }
 
-#vimmy-hints span.right {
+#vimmy-hints span.rotated.right {
+	transform-origin: 0 8px;
 	transform: rotate(20deg);
 }
 
