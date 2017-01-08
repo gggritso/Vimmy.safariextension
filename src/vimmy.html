@@ -5,7 +5,7 @@
   // Listen to blacklisted URLs setting changes
   safari.extension.settings.addEventListener( 'change', function( event ) {
     if ( event.key === 'blackListedURLs' && event.newValue ) announceBlackListToAllTabs();
-    if ( event.key === 'rotateHints' && event.newValue ) announceHintRotationToAllTabs();
+    if ( event.key === 'rotateHints' ) announceHintRotationToAllTabs();
   }, false );
 
 

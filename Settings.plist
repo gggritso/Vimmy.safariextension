@@ -16,7 +16,7 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>true</string>
+		<true/>
 		<key>Key</key>
 		<string>rotateHints</string>
 		<key>Title</key>
