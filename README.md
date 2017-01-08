@@ -34,6 +34,8 @@ Unfortunately Safari is quite limited in what kinds of settings can be added at 
 
 It's also possible to add a global hard-coded website blacklist. If you have thoughts or suggestions for this, please check out the [Github repo](https://github.com/gggritso/Vimmy.safariextension/issues).
 
+If the slightly-rotated hints are a distraction for you, there is also an option to turn that off.
+
 ## Why
 
 There are other Vim extensions for Safari, but this one is mine!
