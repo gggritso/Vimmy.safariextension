@@ -61,13 +61,13 @@
 }
 
 #vimmy-hints span.rotated.left {
-	transform-origin: 26px 8px;
-	transform: rotate(20deg);
+	transform-origin: 36px 8px;
+	transform: rotate(16deg);
 }
 
 #vimmy-hints span.rotated.right {
-	transform-origin: 0 8px;
-	transform: rotate(20deg);
+	transform-origin: -10px 8px;
+	transform: rotate(16deg);
 }
 
 #vimmy-hints span:before,
