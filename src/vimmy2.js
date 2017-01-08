@@ -412,6 +412,8 @@
       activator = activateAnchor;
     } else if ( isButtonLike( $element ) ) {
       activator = clickElement;
+    } else if ( isRadioLike( $element ) ) {
+      activator = clickElement;
     } else {
       activator = focusElement;
     }
@@ -450,6 +452,12 @@
     if ( $element.getAttribute( 'type' ) === 'button' ) return true;
 
     return false
+  }
+
+
+  function isRadioLike( $element ) {
+    if ( [ 'radio', 'checkbox' ].contains( $element.getAttribute( 'type' ) ) ) return true;
+    return false;
   }
 
 
