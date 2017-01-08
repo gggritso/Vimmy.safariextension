@@ -97,8 +97,15 @@
 
   function vimmyKeyDownHandler( event ) {
 
-    if ( elementCapturesKeys( document.activeElement ) ) return;
     if ( URL_IS_BLACKLISTED ) return;
+
+    if ( elementCapturesKeys( document.activeElement ) ) {
+      if ( key === 'esc' ) {
+        return $body.focus();
+      } else {
+        return;
+      }
+    }
 
     var
       key = getKeyNameFromEvent( event ),
