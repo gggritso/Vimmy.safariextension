@@ -5,6 +5,7 @@
   // Listen to blacklisted URLs setting changes
   safari.extension.settings.addEventListener( 'change', function( event ) {
     if ( event.key === 'blackListedURLs' && event.newValue ) announceBlackListToAllTabs();
+    if ( event.key === 'rotateHints' && event.newValue ) announceHintRotationToAllTabs();
   }, false );
 
 
@@ -24,6 +25,16 @@
     browserTab.page.dispatchMessage( 'newBlackListedURLs', safari.extension.settings.blackListedURLs.split( ',' ) );
   }
 
+  function announceHintRotationToAllTabs() {
+    safari.application.browserWindows.forEach( function iterateThroughWindows( browserWindow ) {
+      browserWindow.tabs.forEach( announceHintRotationToTab );
+    });
+  }
+
+  function announceHintRotationToTab( browserTab ) {
+    browserTab.page.dispatchMessage( 'newHintRotation', safari.extension.settings.rotateHints );
+  }
+
   // Listen to requests to open a new tab
   var t;
   safari.application.addEventListener( 'message', function( event ) {
@@ -36,6 +47,7 @@
       activatePreviousTab();
     } else if ( event.name == 'ready' ) {
       announceBlackListToTab( event.target );
+      announceHintRotationToTab( event.target );
     } else if ( event.name == 'closeTab' ) {
       closeTab();
     } else if ( event.name == 'reloadTab' ) {

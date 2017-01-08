@@ -42,6 +42,7 @@
   var
     MODE = 'command',
     FORCE_NEW_TAB = false,
+    ROTATE_HINTS = true,
 
     SCROLL_IS_LOCKED = false,
 
@@ -62,6 +63,7 @@
 
     safari.self.addEventListener( 'message', function handleMessage( event ) {
       if ( event.name === 'newBlackListedURLs' ) checkBlackListStatus( event.message );
+      if ( event.name === 'newHintRotation' ) setHintRotation( event.message );
     });
 
     safari.self.tab.dispatchMessage( 'ready' );
@@ -85,6 +87,11 @@
       if ( expression.test( window.location.href ) ) URL_IS_BLACKLISTED = true;
     }
 
+  }
+
+
+  function setHintRotation( shouldRotateHints ) {
+    ROTATE_HINTS = shouldRotateHints;
   }
 
 
@@ -317,21 +324,22 @@
     // TODO: Attach based on the top of the element, skip the extra calculations!
     var
       bounds = $element.getClientRects()[ 0 ],
-      attachment = ( bounds.left > 40 && bounds.top > 10 ) ? 'left' : 'right';
+      attachment = ( bounds.left > 40 && bounds.top > 10 ) ? 'left' : 'right',
+      rotation = ROTATE_HINTS ? 'rotated' : '';
 
     var
       left,
       top;
 
     if ( attachment === 'left' ) {
-      left = ( bounds.left - ( ( text.length * 8 ) + 14 ) ),
-      top = ( bounds.top + bounds.bottom ) / 2 - 15;
+      left = ( bounds.left - ( ( text.length * 8 ) + 15 ) ),
+      top = ( bounds.top + bounds.bottom ) / 2 - 8;
     } else {
-      left = ( bounds.right ) + 8,
-      top = ( bounds.top + bounds.bottom ) / 2 - 1;
+      left = ( bounds.right ) + 6,
+      top = ( bounds.top + bounds.bottom ) / 2 - 8;
     };
 
-    return $( '<span class="' + attachment + '" style="left: ' + left + 'px; top: ' + top + 'px;">' +
+    return $( '<span class="' + attachment + ' ' + rotation + '" style="left: ' + left + 'px; top: ' + top + 'px;">' +
       '<b>' +  text.split('').join('</b><b>') +
       '</b></span>' );
 
