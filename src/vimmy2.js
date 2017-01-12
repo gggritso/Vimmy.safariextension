@@ -176,6 +176,9 @@
         reloadTab();
       }
 
+      if ( key === 'shift-j' ) ( swallowEvent( event ) && goToPreviousTab() );
+      if ( key === 'shift-k' ) ( swallowEvent( event ) && goToNextTab() );
+
       if ( key === 'g' && PREVIOUS_KEY === 'g' ) scrollTo( null, 0 );
       if ( key === 'shift-g' ) scrollTo( null, $( document ).height() );
 
@@ -224,6 +227,8 @@
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
+
+    return true;
   }
 
 
