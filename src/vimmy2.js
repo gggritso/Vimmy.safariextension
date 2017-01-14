@@ -99,17 +99,17 @@
 
     if ( URL_IS_BLACKLISTED ) return;
 
+    var
+      key = getKeyNameFromEvent( event ),
+      $elements;
+
     if ( elementCapturesKeys( document.activeElement ) ) {
       if ( key === 'esc' ) {
-        return $body.focus();
+        event.target.blur();
       } else {
         return;
       }
     }
-
-    var
-      key = getKeyNameFromEvent( event ),
-      $elements;
 
     if ( MODE === 'command' ) {
 
