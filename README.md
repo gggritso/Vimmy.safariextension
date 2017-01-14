@@ -12,8 +12,8 @@ The best way to get the latest version is to [download the release file](https:/
 - `esc` and `ctrl+[` to break out of link mode
 - `shift-h` to go back in history
 - `shift-l` to go forward in history
-- `gT` to go to the next tab
-- `gt` to go the the previous tab
+- `gT` and `shift-k` to go to the next tab
+- `gt` and `shift-j` to go the the previous tab
 - `x` to close the current tab
 - `r` to reload the current tab
 - `ctrl-d` to scroll down by half a page
