@@ -2,7 +2,7 @@
 
 ## Installation
 
-The best way to get the latest version is to [download the release file](https://github.com/gggritso/Vimmy.safariextension/releases/download/0.7.0/Vimmy.safariextz) from GitHub. The extension is available on the [Safari Extensions Gallery](https://safari-extensions.apple.com/details/?id=com.gggritso.vimmy-36948PQEY6) but they haven't been responding to my requests for an update, so the version there is stale.
+The best way to get the latest version is to [download the release file](https://github.com/gggritso/Vimmy.safariextension/releases/) from GitHub. The extension is available on the [Safari Extensions Gallery](https://safari-extensions.apple.com/details/?id=com.gggritso.vimmy-36948PQEY6) but they haven't been responding to my requests for an update, so the version there is stale.
 
 ## Commands
 - `hjkl` to scroll left/down/up/right
