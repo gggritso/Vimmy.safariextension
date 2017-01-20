@@ -11,7 +11,16 @@
     BUMP_DISTANCE = 100, // px
     SCROLL_DURATION = 100;  // ms
 
-  var GREEDY_INPUT_TYPES = [ 'text', 'password', 'phone', 'email', 'search' ];
+  var GREEDY_INPUT_TYPES = [
+    'text',
+    'password',
+    'phone',
+    'email',
+    'search',
+    'url',
+    'tel',
+    'number',
+  ];
 
   var
     TARGETABLE_ELEMENTS = [ 'a', 'button', 'input', 'select' ],
