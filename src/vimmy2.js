@@ -191,8 +191,8 @@
       if ( key === 'g' && PREVIOUS_KEY === 'g' ) scrollTo( null, 0 );
       if ( key === 'shift-g' ) scrollTo( null, $( document ).height() );
 
-      if ( key === 'shift-t' && PREVIOUS_KEY === 'g' ) goToPreviousTab();
-      if ( key === 't' && PREVIOUS_KEY === 'g' ) goToNextTab();
+      if ( key === 'shift-t' && PREVIOUS_KEY === 'g' ) ( swallowEvent( event ) && goToPreviousTab() );
+      if ( key === 't' && PREVIOUS_KEY === 'g' ) ( swallowEvent( event ) && goToNextTab() );
 
       if ( key === 'shift-h' ) goBackHistory();
       if ( key === 'shift-l' ) goForwardHistory();
