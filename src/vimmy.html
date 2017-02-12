@@ -50,15 +50,8 @@
       announceHintRotationToTab( event.target );
     } else if ( event.name == 'closeTab' ) {
       closeTab();
-    } else if ( event.name == 'reloadTab' ) {
-      reloadTab();
     }
   });
-
-  function reloadTab() {
-    var tab = safari.application.activeBrowserWindow.activeTab;
-    tab.url = tab.url;
-  }
 
   function closeTab() {
     var tab = safari.application.activeBrowserWindow.activeTab;

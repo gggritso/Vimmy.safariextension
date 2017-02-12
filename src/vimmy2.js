@@ -593,7 +593,7 @@
   }
 
   function reloadTab(){
-    safari.self.tab.dispatchMessage( 'reloadTab' );
+    window.location.reload();
   }
 
   // // // // //
