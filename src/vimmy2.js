@@ -506,14 +506,14 @@
 
       safari.self.tab.dispatchMessage( 'newtab', {
         url: url,
-        destination: 'background',
+        visibility: 'background',
       });
 
     } else if ( target === '_blank' ) {
 
       safari.self.tab.dispatchMessage( 'newtab', {
         url: url,
-        destination: null,
+        visibility: 'foreground',
       });
 
     } else {
