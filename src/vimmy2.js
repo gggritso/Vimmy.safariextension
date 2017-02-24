@@ -71,8 +71,10 @@
     $body.append( '<div id="vimmy-hints"></div>' );
 
     safari.self.addEventListener( 'message', function handleMessage( event ) {
-      if ( event.name === 'newBlackListedURLs' ) checkBlackListStatus( event.message );
-      if ( event.name === 'newHintRotation' ) setHintRotation( event.message );
+      if ( event.name === 'settings' ) {
+        checkBlackListStatus( event.message.blackListedURLs );
+        setHintRotation( event.message.rotateHints );
+      }
     });
 
     safari.self.tab.dispatchMessage( 'ready' );
@@ -87,6 +89,10 @@
   function checkBlackListStatus( blackListedURLs ) {
 
     URL_IS_BLACKLISTED = false;
+
+    if ( !blackListedURLs ) return;
+
+    blackListedURLs = blackListedURLs.split( ',' );
 
     var
       i, expression;
