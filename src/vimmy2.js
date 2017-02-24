@@ -219,6 +219,13 @@
       if ( key === 'delete' ) {
         swallowEvent( event );
 
+        if ( TYPED_HINT_CHARACTERS.length === 0 ) {
+          MODE = 'command';
+          hideHints();
+
+          return;
+        }
+
         TYPED_HINT_CHARACTERS.pop();
         filterHints( TYPED_HINT_CHARACTERS );
 
