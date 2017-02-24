@@ -58,6 +58,7 @@
     HINTS = [],
 
     PREVIOUS_KEY = null,
+    MULTIPLIER = 0,
     TYPED_HINT_CHARACTERS = [];
 
 
@@ -147,10 +148,14 @@
       if ( [ 'h', 'j', 'k', 'l' ].contains( key ) ) {
         swallowEvent( event );
 
-        if ( key === 'h' ) scrollBy( -BUMP_DISTANCE, 0 );
-        if ( key === 'j' ) scrollBy( 0, BUMP_DISTANCE );
-        if ( key === 'k' ) scrollBy( 0, -BUMP_DISTANCE );
-        if ( key === 'l' ) scrollBy( BUMP_DISTANCE, 0 );
+        var distance = BUMP_DISTANCE;
+        if ( MULTIPLIER !== 0 ) distance *= MULTIPLIER;
+        MULTIPLIER = 0;
+
+        if ( key === 'h' ) scrollBy( -distance, 0 );
+        if ( key === 'j' ) scrollBy( 0, distance );
+        if ( key === 'k' ) scrollBy( 0, -distance );
+        if ( key === 'l' ) scrollBy( distance, 0 );
 
         return;
       }
@@ -202,6 +207,12 @@
 
       if ( key === 'shift-h' ) goBackHistory();
       if ( key === 'shift-l' ) goForwardHistory();
+
+      if ( !isNaN( key ) ) {
+        MULTIPLIER = MULTIPLIER * 10 + key;
+      } else {
+        MULTIPLIER = 0;
+      }
 
       if ( ![ 'cmd', 'esc', 'shift', 'alt', 'tab' ].contains( key ) ) PREVIOUS_KEY = key;
 
@@ -275,7 +286,7 @@
     if ( event.shiftKey ) modifier += 'shift-';
 
     if ( event.keyCode >= 48 && event.keyCode <= 57 ) {
-      keyName = ( event.keyCode - 48 ).toString();
+      keyName = event.keyCode - 48;
     } else {
       keyName = KEYCODE_LOOKUP[ event.keyCode ];
     }
