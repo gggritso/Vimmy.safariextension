@@ -202,8 +202,8 @@
       if ( key === 'shift-h' ) goBackHistory();
       if ( key === 'shift-l' ) goForwardHistory();
 
-      if ( !isNaN(key) ) {
-        MULTIPLIER = MULTIPLIER * 10 + Number(key);
+      if ( !isNaN( key ) ) {
+        MULTIPLIER = MULTIPLIER * 10 + key;
       } else {
         MULTIPLIER = 0;
       }
@@ -280,7 +280,7 @@
     if ( event.shiftKey ) modifier += 'shift-';
 
     if ( event.keyCode >= 48 && event.keyCode <= 57 ) {
-      keyName = ( event.keyCode - 48 ).toString();
+      keyName = event.keyCode - 48;
     } else {
       keyName = KEYCODE_LOOKUP[ event.keyCode ];
     }
