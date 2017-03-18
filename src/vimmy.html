@@ -14,11 +14,18 @@
   }
 
   // Listen to requests to open a new tab
-  var t;
   safari.application.addEventListener( 'message', function( event ) {
     if ( event.name == 'newtab' ) {
-      t = safari.application.activeBrowserWindow.openTab( event.message.destination );
-      t.url = event.message.url;
+
+      var
+        url = event.message.url,
+        visibility = event.message.visibility,
+        tab;
+
+      if ( safari.extension.settings.activateNewTabs ) visibility = 'foreground';
+
+      tab = safari.application.activeBrowserWindow.openTab( visibility );
+      tab.url = url;
     } else if ( event.name == 'nextTab' ) {
       activateNextTab();
     } else if ( event.name == 'previousTab' ) {

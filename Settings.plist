@@ -24,5 +24,15 @@
 		<key>Type</key>
 		<string>CheckBox</string>
 	</dict>
+	<dict>
+		<key>DefaultValue</key>
+		<string>0</string>
+		<key>Key</key>
+		<string>activateNewTabs</string>
+		<key>Title</key>
+		<string>Immediately activate new tabs</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
 </array>
 </plist>
