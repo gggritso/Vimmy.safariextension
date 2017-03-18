@@ -10,6 +10,18 @@
        <key>Developer Identifier</key>
        <string>36948PQEY6</string>
        <key>CFBundleVersion</key>
+       <string>12</string>
+       <key>CFBundleShortVersionString</key>
+       <string>0.9.0</string>
+       <key>URL</key>
+       <string>https://github.com/gggritso/Vimmy.safariextension/releases/download/0.9.0/Vimmy.safariextz</string>
+     </dict>
+     <dict>
+       <key>CFBundleIdentifier</key>
+       <string>com.gggritso.vimmy</string>
+       <key>Developer Identifier</key>
+       <string>36948PQEY6</string>
+       <key>CFBundleVersion</key>
        <string>11</string>
        <key>CFBundleShortVersionString</key>
        <string>0.8.2</string>
