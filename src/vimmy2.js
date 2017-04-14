@@ -75,6 +75,7 @@
       if ( event.name === 'settings' ) {
         checkBlackListStatus( event.message.blackListedURLs );
         setHintRotation( event.message.rotateHints );
+        if ( event.message.hintCharacters ) setHintCharacters( event.message.hintCharacters );
       }
     });
 
@@ -110,6 +111,9 @@
     ROTATE_HINTS = shouldRotateHints;
   }
 
+  function setHintCharacters( characters ) {
+    CHARACTERS = $.unique( characters.toUpperCase().split( '' ) );
+  }
 
   function vimmyKeyDownHandler( event ) {
 

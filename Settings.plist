@@ -3,6 +3,16 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>DefaultValue</key>
+		<string>asdfewjklio</string>
+		<key>Key</key>
+		<string>hintCharacters</string>
+		<key>Title</key>
+		<string>Hint Characters</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
 		<key>Key</key>
 		<string>blackListedURLs</string>
 		<key>Title</key>
