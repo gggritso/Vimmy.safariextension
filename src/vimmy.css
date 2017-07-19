@@ -32,6 +32,27 @@
 	transition: opacity 0.2s !important;
 }
 
+#vimmy-hints.high-contrast span {
+	color: #252525 !important;
+	background-color: #FFE68F !important;
+}
+
+#vimmy-hints.high-contrast span b {
+	font-weight: bold !important;
+}
+
+#vimmy-hints.high-contrast span.left:after {
+	border-color: transparent transparent transparent #FFE68F		!important;
+}
+
+#vimmy-hints.high-contrast span.right:before {
+	border-color: transparent #FFE68F transparent transparent		!important;
+}
+
+#vimmy-hints.high-contrast span b.typed {
+  color: #8e44ad !important;
+}
+
 #vimmy-hints span.ineligible {
 	opacity: 0.1 !important;
 }

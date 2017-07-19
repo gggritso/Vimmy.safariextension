@@ -75,6 +75,7 @@
       if ( event.name === 'settings' ) {
         checkBlackListStatus( event.message.blackListedURLs );
         setHintRotation( event.message.rotateHints );
+        setContrastMode( event.message.highContrastMode );
         if ( event.message.hintCharacters ) setHintCharacters( event.message.hintCharacters );
       }
     });
@@ -109,6 +110,11 @@
 
   function setHintRotation( shouldRotateHints ) {
     ROTATE_HINTS = shouldRotateHints;
+  }
+
+
+  function setContrastMode( highContrastMode ) {
+    $( '#vimmy-hints' ).toggleClass( 'high-contrast', highContrastMode );
   }
 
   function setHintCharacters( characters ) {
