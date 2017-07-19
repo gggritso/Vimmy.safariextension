@@ -230,7 +230,7 @@
 
     } else if ( MODE === 'elements' ) {
 
-      if ( [ 'esc', 'ctrl+[' ].contains( key ) ) {
+      if ( [ 'esc', 'ctrl-[' ].contains( key ) ) {
         swallowEvent( event );
 
         MODE = 'command';
