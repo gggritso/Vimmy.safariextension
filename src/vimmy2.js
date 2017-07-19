@@ -218,6 +218,8 @@
       if ( key === 'shift-h' ) goBackHistory();
       if ( key === 'shift-l' ) goForwardHistory();
 
+      if ( key === 't' && PREVIOUS_KEY !== 'g' ) ( swallowEvent( event ) && openNewTab() );
+
       if ( !isNaN( key ) ) {
         MULTIPLIER = MULTIPLIER * 10 + key;
       } else {
@@ -612,6 +614,10 @@
 
   function goToPreviousTab() {
     safari.self.tab.dispatchMessage( 'previousTab' );
+  }
+
+  function openNewTab() {
+    safari.self.tab.dispatchMessage( 'newTab' );
   }
 
   function goBackHistory() {
