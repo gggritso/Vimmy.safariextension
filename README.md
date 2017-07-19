@@ -15,6 +15,7 @@ The best way to get the latest version is to [download the release file](https:/
 - `gt` and `shift-k` to go to the next tab
 - `gT` and `shift-j` to go the the previous tab
 - `x` to close the current tab
+- `t` to open a new tab
 - `r` to reload the current tab
 - `ctrl-d` to scroll down by half a page
 - `ctrl-u` to scroll up by half a page
@@ -35,6 +36,8 @@ Unfortunately Safari is quite limited in what kinds of settings can be added at 
 It's also possible to add a global hard-coded website blacklist. If you have thoughts or suggestions for this, please check out the [Github repo](https://github.com/gggritso/Vimmy.safariextension/issues).
 
 If the slightly-rotated hints are a distraction for you, there is also an option to turn that off.
+
+If the black-and-white hints aren't your cup of tea, you're welcome to try high-contrast mode which changes the background to yellow.
 
 ## Why
 
