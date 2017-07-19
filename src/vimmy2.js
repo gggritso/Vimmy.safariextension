@@ -481,12 +481,20 @@
       activator( $element );
     }, 0 );
 
+    if ( !FORCE_NEW_TAB ) {
+      window.setTimeout( function() {
 
-    window.setTimeout( function() {
+        hideHints();
+        MODE = 'command';
+      }, 150 );
+    } else {
 
-      hideHints();
-      MODE = 'command';
-    }, 150 );
+      window.setTimeout( function() {
+
+        TYPED_HINT_CHARACTERS = [];
+        filterHints( TYPED_HINT_CHARACTERS );
+      }, 150 );
+    }
 
   }
 
