@@ -25,5 +25,9 @@
     return this.split( '' ).reverse().join( '' );
   };
 
+  String.prototype.isCapital = function() {
+    return this.toUpperCase() === this;
+  }
+
 
 })();

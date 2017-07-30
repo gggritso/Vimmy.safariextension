@@ -51,6 +51,7 @@
   var
     MODE = 'command',
     FORCE_NEW_TAB = false,
+    FORCE_NEW_TAB_EXCEPTION = false,
     ROTATE_HINTS = true,
 
     SCROLL_IS_LOCKED = false,
@@ -255,10 +256,18 @@
         return;
       }
 
-      if ( key.toUpperCase().isIn( CHARACTERS ) ) {
+      var letter;
+
+      if ( key.startsWith( 'shift-' ) ) {
+        letter = key.slice( 6 ).toUpperCase();
+      } else {
+        letter = key;
+      }
+
+      if ( letter.toUpperCase().isIn( CHARACTERS ) ) {
         swallowEvent( event );
 
-        TYPED_HINT_CHARACTERS.push( key );
+        TYPED_HINT_CHARACTERS.push( letter );
         filterHints( TYPED_HINT_CHARACTERS );
       }
 
@@ -454,6 +463,8 @@
     if ( activeHints.length > 1 ) return;
     activeHint = activeHints[ 0 ];
 
+    if ( characters.slice( -1 )[ 0 ].isCapital() ) FORCE_NEW_TAB_EXCEPTION = true;
+
     if ( activeHint.text === prefix ) {
       activateElement( activeHint.$element );
       highlightHint( activeHint.$hint );
@@ -481,18 +492,17 @@
       activator( $element );
     }, 0 );
 
-    if ( !FORCE_NEW_TAB ) {
-      window.setTimeout( function() {
-
-        hideHints();
-        MODE = 'command';
-      }, 150 );
-    } else {
-
+    if ( FORCE_NEW_TAB || FORCE_NEW_TAB_EXCEPTION ) {
       window.setTimeout( function() {
 
         TYPED_HINT_CHARACTERS = [];
         filterHints( TYPED_HINT_CHARACTERS );
+      }, 150 );
+    } else {
+      window.setTimeout( function() {
+
+        hideHints();
+        MODE = 'command';
       }, 150 );
     }
 
@@ -540,13 +550,14 @@
       target = $anchor.getAttribute( 'target' ),
       url = makeAbsoluteUrl( href );
 
-    if ( FORCE_NEW_TAB ) {
+    if ( FORCE_NEW_TAB || FORCE_NEW_TAB_EXCEPTION ) {
 
       safari.self.tab.dispatchMessage( 'newtab', {
         url: url,
         visibility: 'background',
       });
 
+      FORCE_NEW_TAB_EXCEPTION = false;
     } else if ( target === '_blank' ) {
 
       safari.self.tab.dispatchMessage( 'newtab', {
