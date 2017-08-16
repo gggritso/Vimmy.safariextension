@@ -294,7 +294,7 @@
 
     if ( tag === 'TEXTAREA' ) return true;
     if ( tag === 'SELECT' ) return true;
-    if ( tag === 'INPUT' && type.isIn( GREEDY_INPUT_TYPES ) ) return true;
+    if ( tag === 'INPUT' && (!type || type.isIn( GREEDY_INPUT_TYPES )) ) return true;
     if ( element.contentEditable === 'true' ) return true;
 
 
