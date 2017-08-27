@@ -53,6 +53,7 @@
     FORCE_NEW_TAB = false,
     FORCE_NEW_TAB_EXCEPTION = false,
     ROTATE_HINTS = true,
+    BASIC_HINTS = false,
 
     SCROLL_IS_LOCKED = false,
 
@@ -76,6 +77,7 @@
       if ( event.name === 'settings' ) {
         checkBlackListStatus( event.message.blackListedURLs );
         setHintRotation( event.message.rotateHints );
+        setHintDecoration( event.message.basicHints );
         setContrastMode( event.message.highContrastMode );
         if ( event.message.hintCharacters ) setHintCharacters( event.message.hintCharacters );
       }
@@ -113,6 +115,9 @@
     ROTATE_HINTS = shouldRotateHints;
   }
 
+  function setHintDecoration( shouldUseBasicHints ) {
+    BASIC_HINTS = shouldUseBasicHints;
+  }
 
   function setContrastMode( highContrastMode ) {
     $( '#vimmy-hints' ).toggleClass( 'high-contrast', highContrastMode );
@@ -398,7 +403,7 @@
       left,
       top;
 
-    if ( attachment === 'left' ) {
+    if ( attachment === 'left' || BASIC_HINTS ) {
       left = ( bounds.left - ( ( text.length * 8 ) + 15 ) ),
       top = ( bounds.top + bounds.bottom ) / 2 - 8;
     } else {
@@ -406,10 +411,17 @@
       top = ( bounds.top + bounds.bottom ) / 2 - 8;
     };
 
-    return $( '<span class="' + attachment + ' ' + rotation + '" style="left: ' + left + 'px; top: ' + top + 'px;">' +
-      '<b>' +  text.split('').join('</b><b>') +
-      '</b></span>' );
+    var $hint = $( '<span><b>' +  text.split( '' ).join( '</b><b>' ) + '</b></span>' );
+    if ( !BASIC_HINTS ) $hint.addClass( attachment );
+    $hint.css({
+      left: left,
+      top: top,
+    });
 
+    if ( ROTATE_HINTS || !BASIC_HINTS ) $hint.addClass( 'rotated' );
+    if ( BASIC_HINTS ) $hint.addClass( 'basic' );
+
+    return $hint;
   }
 
 

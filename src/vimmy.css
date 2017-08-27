@@ -91,6 +91,15 @@
 	transform: rotate(16deg);
 }
 
+#vimmy-hints span.basic:before,
+#vimmy-hints span.basic:after {
+	content: none !important;
+}
+
+#vimmy-hints span.basic {
+	transform: translate(26px, 0px);
+}
+
 #vimmy-hints span:before,
 #vimmy-hints span:after {
 	content: ""													!important;

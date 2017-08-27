@@ -52,5 +52,13 @@
 		<key>Type</key>
 		<string>CheckBox</string>
 	</dict>
+	<dict>
+		<key>Key</key>
+		<string>basicHints</string>
+		<key>Title</key>
+		<string>Basic Hints</string>
+		<key>Type</key>
+		<string>CheckBox</string>
+	</dict>
 </array>
 </plist>
