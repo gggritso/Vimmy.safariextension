@@ -1,8 +1,8 @@
 ( function() {
+  /* eslint-disable no-magic-numbers, complexity */
   'use strict';
 
   var
-    $window = $( window ),
     $body = $( 'body' );
 
   var
@@ -41,7 +41,7 @@
     85: 'u', 86: 'v', 87: 'w', 88: 'x', 89: 'y',
     90: 'z',
 
-    219: '[', 191: '/'
+    219: '[', 191: '/',
   };
 
   // TODO: Benchmark and improve hint creation time
@@ -70,7 +70,7 @@
 
     if ( amAnIframe() ) return;
 
-    window.addEventListener( 'keydown', vimmyKeyDownHandler, true )
+    window.addEventListener( 'keydown', vimmyKeyDownHandler, true );
     $body.append( '<div id="vimmy-hints"></div>' );
 
     safari.self.addEventListener( 'message', function handleMessage( event ) {
@@ -161,7 +161,7 @@
         return;
       }
 
-      if ( [ 'h', 'j', 'k', 'l' ].contains( key ) ) {
+      if ([ 'h', 'j', 'k', 'l' ].contains( key ) ) {
         swallowEvent( event );
 
         var distance = BUMP_DISTANCE;
@@ -238,7 +238,7 @@
 
     } else if ( MODE === 'elements' ) {
 
-      if ( [ 'esc', 'ctrl-[' ].contains( key ) ) {
+      if ([ 'esc', 'ctrl-[' ].contains( key ) ) {
         swallowEvent( event );
 
         MODE = 'command';
@@ -293,7 +293,7 @@
   }
 
 
- function elementCapturesKeys( element ) {
+  function elementCapturesKeys( element ) {
 
     var
       tag = element.tagName,
@@ -317,7 +317,7 @@
 
     if ( event.metaKey ) modifier += 'cmd-';
     if ( event.ctrlKey ) modifier += 'ctrl-';
-    if ( event.altKey ) modifier +=  'alt-';
+    if ( event.altKey ) modifier += 'alt-';
     if ( event.shiftKey ) modifier += 'shift-';
 
     if ( event.keyCode >= 48 && event.keyCode <= 57 ) {
@@ -343,7 +343,7 @@
 
   function inViewPort( element ) {
 
-    var bounds = element.getBoundingClientRect()
+    var bounds = element.getBoundingClientRect();
 
     return ( bounds.left >= 0 && bounds.top >= 0 && bounds.bottom <= window.innerHeight && bounds.right <= window.innerWidth );
 
@@ -375,7 +375,7 @@
 
       text = '';
       for ( j = 1; j <= requiredHintLength; j++ ) {
-        text += CHARACTERS[ Math.floor( i /  Math.pow( CHARACTERS.length, requiredHintLength - j ) ) % CHARACTERS.length ]; // TODO: Abstract out
+        text += CHARACTERS[ Math.floor( i / Math.pow( CHARACTERS.length, requiredHintLength - j ) ) % CHARACTERS.length ]; // TODO: Abstract out
       }
 
       i += 1;
@@ -394,12 +394,12 @@
 
 
   function makeHintHTML( $element, text ) {
+    /* eslint-disable no-magic-numbers */
 
     // TODO: Attach based on the top of the element, skip the extra calculations!
     var
       bounds = $element.getClientRects()[ 0 ],
-      attachment = ( bounds.left > 40 && bounds.top > 10 ) ? 'left' : 'right',
-      rotation = ROTATE_HINTS ? 'rotated' : '';
+      attachment = ( bounds.left > 40 && bounds.top > 10 ) ? 'left' : 'right';
 
     var
       left,
@@ -411,9 +411,9 @@
     } else {
       left = ( bounds.right ) + 6,
       top = ( bounds.top + bounds.bottom ) / 2 - 8;
-    };
+    }
 
-    var $hint = $( '<span><b>' +  text.split( '' ).join( '</b><b>' ) + '</b></span>' );
+    var $hint = $( '<span><b>' + text.split( '' ).join( '</b><b>' ) + '</b></span>' );
     if ( !BASIC_HINTS ) $hint.addClass( attachment );
     $hint.css({
       left: left,
@@ -469,7 +469,7 @@
 
         hint.$hint.removeClass( 'ineligible' );
       } else {
-        hint.$hint.addClass( 'ineligible')
+        hint.$hint.addClass( 'ineligible' );
       }
 
     });
@@ -541,12 +541,12 @@
     if ( $element.tagName === 'BUTTON' ) return true;
     if ( $element.getAttribute( 'type' ) === 'button' ) return true;
 
-    return false
+    return false;
   }
 
 
   function isRadioLike( $element ) {
-    if ( [ 'radio', 'checkbox' ].contains( $element.getAttribute( 'type' ) ) ) return true;
+    if ([ 'radio', 'checkbox' ].contains( $element.getAttribute( 'type' ) ) ) return true;
     return false;
   }
 
@@ -605,7 +605,7 @@
       } else if ( url.startsWith( '/' ) ) {
         url = window.location.origin + url;
       } else {
-        url = window.location.href.match(/.+\//) + url;
+        url = window.location.href.match( /.+\// ) + url;
       }
 
     }
@@ -615,7 +615,7 @@
 
 
   function scrollBy( x, y ) {
-    scroll( '+=' + ( x || 0 ) , '+=' + ( y || 0 ) );
+    scroll( '+=' + ( x || 0 ), '+=' + ( y || 0 ) );
   }
 
 
@@ -666,11 +666,11 @@
     window.history.forward();
   }
 
-  function closeTab(){
+  function closeTab() {
     safari.self.tab.dispatchMessage( 'closeTab' );
   }
 
-  function reloadTab(){
+  function reloadTab() {
     window.location.reload();
   }
 
