@@ -215,6 +215,8 @@
       if ( key === 'shift-j' ) ( swallowEvent( event ) && goToPreviousTab() );
       if ( key === 'shift-k' ) ( swallowEvent( event ) && goToNextTab() );
 
+      if ( key === 'i' && PREVIOUS_KEY === 'g' ) ( swallowEvent( event ) && focusFirstInput() );
+
       if ( key === 'g' && PREVIOUS_KEY === 'g' ) scrollTo( null, 0 );
       if ( key === 'shift-g' ) scrollTo( null, $( document ).height() );
 
@@ -291,7 +293,7 @@
   }
 
 
-  function elementCapturesKeys( element ) {
+ function elementCapturesKeys( element ) {
 
     var
       tag = element.tagName,
@@ -638,6 +640,11 @@
 
   }
 
+
+  function focusFirstInput() {
+    var firstFocusableElement = $( 'input' ).toArray().find( elementCapturesKeys );
+    if ( firstFocusableElement ) return firstFocusableElement.focus();
+  }
 
   function goToNextTab() {
     safari.self.tab.dispatchMessage( 'nextTab' );
