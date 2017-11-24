@@ -1,4 +1,4 @@
-(function() {
+( function() {
   'use strict';
 
   Array.prototype.contains = function( e ) {
@@ -10,7 +10,7 @@
   };
 
   String.prototype.startsWith = function( substring ) {
-    return this.substring(0, substring.length ) === substring;
+    return this.substring( 0, substring.length ) === substring;
   };
 
   String.prototype.contains = function( substring ) {
@@ -27,7 +27,7 @@
 
   String.prototype.isCapital = function() {
     return this.toUpperCase() === this;
-  }
+  };
 
 
 })();
