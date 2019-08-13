@@ -1,4 +1,10 @@
-# Vimmy - Neato Vim-ness for Safari
+# [Abandoned] Vimmy - Neato Vim-ness for Safari
+
+## Project Status
+
+Ever since Mojave Apple has been making it harder and harder and more annoying to develop Safari extensions to the point where I just don't feel like doing it anymore. The process is now more obscure, the documentation is lacking, and the upgrade path is unclear.
+
+If you're an application developer and you want to take this project over, by all means, go ahead and fork it! The license is fully permissive. You can re-distribute this as your own, and even charge for it if you wish. Good luck to you, if you do!
 
 ## Installation
 
