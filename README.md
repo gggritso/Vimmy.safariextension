@@ -6,6 +6,8 @@ Ever since Mojave Apple has been making it harder and harder and more annoying t
 
 If you're an application developer and you want to take this project over, by all means, go ahead and fork it! The license is fully permissive. You can re-distribute this as your own, and even charge for it if you wish. Good luck to you, if you do!
 
+As an alternative, you can check out [Vimari](https://televator.net/vimari/) which is supported on Safari 13.
+
 ## Installation
 
 The best way to get the latest version is to [download the release file](https://github.com/gggritso/Vimmy.safariextension/releases/latest) from GitHub. The extension is available on the [Safari Extensions Gallery](https://safari-extensions.apple.com/details/?id=com.gggritso.vimmy-36948PQEY6) but they haven't been responding to my requests for an update, so the version there is stale.
